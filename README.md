@@ -1,12 +1,12 @@
 # bbGuild - Lord of the Rings Online
 [![Tests](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml)
 
-Game plugin that adds Lord of the Rings Online support to [bbGuild](https://github.com/avandenberghe/bbguild).
+Game plugin that adds Lord of the Rings Online support to [bbGuild](https://github.com/avatharbe/bbguild).
 
 ## Features
 
 - **LOTRO Classes** - 16 classes including Free Peoples (Burglar, Captain, Champion, Guardian, Hunter, Lore-master, Minstrel, Rune-keeper, Warden) and Monster Play (Reaver, Defiler, Weaver, BlackArrow, Warleader, Stalker) with color codes
-- **LOTRO Races** - 22 race variants across Man, Hobbit, Elf, Dwarf, and Monster factions with sub-race specializations (e.g. Man of Gondor, Lorien Elf, Iron Hill Dwarf)
+- **LOTRO Races** - 24 race variants across Man, Hobbit, Elf, Dwarf, Beorning, and Monster factions with sub-race specializations (e.g. Man of Gondor, Lorien Elf, Iron Hill Dwarf)
 - **Factions** - Free Peoples and Servants of the Eye
 - **Localization** - Class and race names in English, German, French, and Italian
 - **Allakhazam Links** - Boss and zone database URLs linked to LOTRO Allakhazam
@@ -14,7 +14,7 @@ Game plugin that adds Lord of the Rings Online support to [bbGuild](https://gith
 ## Requirements
 
 - phpBB >= 3.3.0
-- PHP >= 7.4.0
+- PHP >= 8.1.0
 - **bbGuild core** (`avathar/bbguild`) must be installed and enabled
 
 ## Installation
@@ -68,12 +68,13 @@ Game plugin that adds Lord of the Rings Online support to [bbGuild](https://gith
 | 24 | Warleader | Plate |
 | 25 | Stalker | Mail |
 
-### Races (22)
+### Races (24)
 
 **Man:** Man, Man of Dalelands, Man of Gondor, Man of Rohan
 **Hobbit:** Hobbit, Fallohide Hobbit, Harfoot Hobbit, Stoor Hobbit
-**Elf:** Elf, Nandor Elf, Lorien Elf, Mirkwood Elf, Rivendell Elf
-**Dwarf:** Dwarf, Blue Mountains Dwarf, Grey Mountain Dwarf, Iron Hill Dwarf, Lonely Mountain Dwarf, White Mountain Dwarf
+**Elf:** Elf, Nandor Elf, Lorien Elf, Mirkwood Elf, Rivendell Elf, High Elf
+**Dwarf:** Dwarf, Blue Mountains Dwarf, Grey Mountain Dwarf, Iron Hill Dwarf, Lonely Mountain Dwarf, White Mountain Dwarf, Stout-axe Dwarf
+**Beorning:** Beorning
 **Monster:** Servant of the Eye
 
 ## License
@@ -82,6 +83,6 @@ Game plugin that adds Lord of the Rings Online support to [bbGuild](https://gith
 
 ## Links
 
-- [bbGuild Core](https://github.com/avandenberghe/bbguild)
+- [bbGuild Core](https://github.com/avatharbe/bbguild)
 - [LOTRO Allakhazam](http://lotro.allakhazam.com/)
-- [Issue Tracker](https://github.com/avandenberghe/bbguild/issues)
+- [Issue Tracker](https://github.com/avatharbe/bbguildlotro/issues)
