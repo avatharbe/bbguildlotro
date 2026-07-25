@@ -1,4 +1,7 @@
 # bbGuild - Lord of the Rings Online
+
+**Current version:** 2.0.0-rc1 (release candidate)
+
 [![Tests](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml)
 
 Lord of the Rings Online guilds are Kinships, and the community around them has always leaned more toward roleplay and shared adventuring than competitive raiding — a different pace this plugin is built to match rather than fight. bbguildlotro covers all 16 classes across Free Peoples and Monster Play, and 24 race variants (including Beorning, High Elf, and Stout-axe Dwarf) with sub-race detail like Man of Gondor or Lorien Elf, plus boss/zone links straight to LOTRO Allakhazam. It gives a Kinship's roster and recruitment the same forum-first home as any other guild tool here, without forcing a raid-guild structure onto a community that isn't one.
