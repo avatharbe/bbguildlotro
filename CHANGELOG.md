@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.0-rc2 26/07/2026
+  - [CHG] Require bbGuild core >= 2.0.0-rc5 — aligns this plugin with the rc2 game-plugin set; earlier core releases can no longer install it
+
 ## 2.0.0-rc1 24/07/2026
   - [FIX] Migration dependency pointed at a since-removed bbguild core migration path (`basics\schema`, squashed into `v200b3` in an earlier core release) — this plugin could not install at all against current core
   - [FIX] `get_table_names()` was missing `bb_specializations_table`, which would have silently blocked any future specialization seeding (issue #331 Phase 4)
