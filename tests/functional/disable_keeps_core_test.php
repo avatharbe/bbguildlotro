@@ -47,7 +47,7 @@ class avathar_bbguildlotro_disable_keeps_core_test extends phpbb_functional_test
 		// this test truly doesn't depend on any other plugin; otherwise
 		// (e.g. sample data was removed by another test file) fall back to
 		// inserting our own 'custom'-game control guild at a distinct id.
-		$sql = "SELECT id FROM " . $prefix . "bb_guild WHERE game_id = 'custom' " . $db->sql_order_by(array('id' => 'ASC'));
+		$sql = "SELECT id FROM " . $prefix . "bb_guild WHERE game_id = 'custom' ORDER BY id ASC";
 		$result = $db->sql_query($sql);
 		$row = $db->sql_fetchrow($result);
 		$db->sql_freeresult($result);
@@ -87,28 +87,36 @@ class avathar_bbguildlotro_disable_keeps_core_test extends phpbb_functional_test
 
 	public function test_disabling_bbguildlotro_does_not_break_core_guild_or_acp()
 	{
-		$this->login('admin');
-
+		// The guild view route is public (u_bbguild is granted to Guests by
+		// default), so no login is needed for it. Note: disable_ext()/
+		// install_ext() drive their own login flow internally (they assert
+		// a logged-out state before authenticating) — logging in manually
+		// beforehand makes that assertion fail against an
+		// already-authenticated session, so auth is deferred until just
+		// before the one request that actually needs it (the ACP check).
 		$before_guild_status = $this->get_status('app.php/guild/' . $this->control_guild_id);
 		$this->assertSame(200, $before_guild_status, 'control guild did not render before disabling bbguildlotro');
 
+		$this->login('admin');
 		$this->admin_login();
 		$before_acp_status = $this->get_status('adm/index.php?i=-avathar-bbguild-acp-game_module&mode=listgames&sid=' . $this->sid);
 		$this->assertSame(200, $before_acp_status, 'ACP game list did not load before disabling bbguildlotro');
+		$this->logout();
 
 		$this->disable_ext('avathar/bbguildlotro');
 
 		$after_guild_status = $this->get_status('app.php/guild/' . $this->control_guild_id);
 		$this->assertSame(200, $after_guild_status, 'control guild broke after disabling bbguildlotro');
 
+		$this->login('admin');
+		$this->admin_login();
 		$after_acp_status = $this->get_status('adm/index.php?i=-avathar-bbguild-acp-game_module&mode=listgames&sid=' . $this->sid);
 		$this->assertSame(200, $after_acp_status, 'ACP game list broke after disabling bbguildlotro');
+		$this->logout();
 
 		// Restore state for any test files that run after this one in the
 		// same suite (phpbb_functional_test_case does not reset DB state
 		// between test classes).
 		$this->install_ext('avathar/bbguildlotro');
-
-		$this->logout();
 	}
 }
