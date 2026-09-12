@@ -66,17 +66,30 @@ class avathar_bbguildlotro_lotro_seed_data_test extends phpbb_functional_test_ca
 	public function test_every_race_references_a_valid_faction()
 	{
 		$factions = $this->fetch_all("SELECT faction_id FROM " . $this->get_table_prefix() . "bb_factions WHERE game_id = 'lotro'");
-		$valid_faction_ids = array_column($factions, 'faction_id');
+		$valid_faction_ids = array_map('intval', array_column($factions, 'faction_id'));
 		$valid_faction_ids[] = 0; // 0 is the "no faction" sentinel used elsewhere in bbguild core
 
 		$races = $this->fetch_all('SELECT race_id, race_faction_id
 			FROM ' . $this->get_table_prefix() . "bb_races
 			WHERE game_id = 'lotro'");
 
-		$this->assertNotEmpty($races);
+		// DIAGNOSTIC (temporary): this assertion has failed in CI on
+		// race_id 0 / faction_id 1 despite lotro_installer.php seeding
+		// exactly that pair and nothing else touching bb_factions for
+		// game_id='lotro' in this test suite. Dumping full state on
+		// failure to actually observe what CI sees instead of guessing
+		// further from static reading. Remove once root-caused.
+		$this->assertNotEmpty($races, 'no lotro races found at all — factions count: ' . count($factions) . ', games row: ' . var_export($this->fetch_all("SELECT * FROM " . $this->get_table_prefix() . "bb_games WHERE game_id = 'lotro'"), true));
 		foreach ($races as $row)
 		{
-			$this->assertContains((int) $row['race_faction_id'], $valid_faction_ids, "race_id {$row['race_id']} references a faction_id not present in bb_factions for game_id='lotro'");
+			$this->assertContains(
+				(int) $row['race_faction_id'],
+				$valid_faction_ids,
+				"race_id {$row['race_id']} references a faction_id not present in bb_factions for game_id='lotro'. "
+				. 'valid_faction_ids=' . var_export($valid_faction_ids, true)
+				. ' raw factions rows=' . var_export($factions, true)
+				. ' race_count=' . count($races)
+			);
 		}
 	}
 
