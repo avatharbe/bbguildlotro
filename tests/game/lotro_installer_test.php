@@ -75,6 +75,29 @@ class lotro_installer_test extends TestCase
 		$method->invoke($this->installer);
 	}
 
+	/**
+	 * Set (key => value) or remove (value === null) a single entry in the
+	 * installer's table_names map, on top of whatever setUp() put there.
+	 */
+	private function set_table_name(string $key, ?string $value): void
+	{
+		$ref = new \ReflectionClass($this->installer);
+		$tn = $ref->getProperty('table_names');
+		$tn->setAccessible(true);
+		$current = $tn->getValue($this->installer);
+
+		if ($value === null)
+		{
+			unset($current[$key]);
+		}
+		else
+		{
+			$current[$key] = $value;
+		}
+
+		$tn->setValue($this->installer, $current);
+	}
+
 	// ── Factions ───────────────────────────────────────────
 
 	public function test_install_factions_count(): void
@@ -255,5 +278,114 @@ class lotro_installer_test extends TestCase
 		$method = new \ReflectionMethod(lotro_installer::class, 'has_api_support');
 		$method->setAccessible(true);
 		$this->assertFalse($method->invoke($this->installer));
+	}
+
+	// ── Trait line specializations (install_specs) ─────────
+	//
+	// lotro_installer implements install_specs() with a catalog covering
+	// the 10 Free Peoples classes (class_id 1-10; see game/lotro_provider
+	// .php's spec_catalog()). class_id 0 (Unknown) and the six Monster
+	// Play class_ids (20-25) are deliberately not seeded — see that
+	// method's docblock for why.
+	//
+	// Most classes have 3 selectable trait lines, but Guardian (4),
+	// Minstrel (7), and Warden (9) currently have only 2: their yellow
+	// line was converted to a passive/supplemental tree that players can
+	// no longer choose as a specialization — see spec_catalog()'s
+	// per-class docblock notes for the sourcing on that.
+
+	private const EXPECTED_SPEC_COUNTS = [
+		1 => 3, 2 => 3, 3 => 3, 4 => 2, 5 => 3,
+		6 => 3, 7 => 2, 8 => 3, 9 => 2, 10 => 3,
+	];
+
+	public function test_install_specs_seeds_when_table_wired(): void
+	{
+		$this->set_table_name('bb_specializations_table', 'phpbb_bb_specializations');
+
+		$this->invoke_protected('install_specs');
+
+		$this->assertCount(1, $this->inserted);
+		// 7 classes x 3 lines + 3 classes (Guardian/Minstrel/Warden) x 2 lines = 27
+		$this->assertCount(27, $this->inserted[0]['data']);
+
+		foreach ($this->inserted[0]['data'] as $row)
+		{
+			$this->assertSame('lotro', $row['game_id']);
+			$this->assertContains($row['class_id'], range(1, 10), "spec '{$row['spec_name']}' has a valid class_id");
+			$this->assertContains($row['role_id'], array(0, 1, 2), "spec '{$row['spec_name']}' has a valid role_id");
+			$this->assertNotSame('', $row['spec_name'], 'spec_name must not be empty');
+			$this->assertContains($row['spec_order'], array(1, 2, 3));
+		}
+	}
+
+	public function test_install_specs_covers_no_unknown_or_monster_play_classes(): void
+	{
+		$this->set_table_name('bb_specializations_table', 'phpbb_bb_specializations');
+
+		$this->invoke_protected('install_specs');
+
+		$class_ids = array_unique(array_column($this->inserted[0]['data'], 'class_id'));
+		sort($class_ids);
+		// class_id 0 (Unknown) and 20-25 (Monster Play) are intentionally
+		// excluded — see lotro_installer::install_specs() docblock.
+		$this->assertSame(range(1, 10), $class_ids);
+	}
+
+	public function test_install_specs_expected_lines_per_class(): void
+	{
+		$this->set_table_name('bb_specializations_table', 'phpbb_bb_specializations');
+
+		$this->invoke_protected('install_specs');
+
+		$per_class = array_count_values(array_column($this->inserted[0]['data'], 'class_id'));
+		foreach (self::EXPECTED_SPEC_COUNTS as $class_id => $expected)
+		{
+			$this->assertSame($expected, $per_class[$class_id] ?? 0, "class_id $class_id should have $expected trait line(s)");
+		}
+	}
+
+	public function test_install_specs_no_duplicate_spec_names_within_class(): void
+	{
+		$this->set_table_name('bb_specializations_table', 'phpbb_bb_specializations');
+
+		$this->invoke_protected('install_specs');
+
+		$by_class = [];
+		foreach ($this->inserted[0]['data'] as $row)
+		{
+			$by_class[$row['class_id']][] = $row['spec_name'];
+		}
+		foreach ($by_class as $class_id => $names)
+		{
+			$this->assertCount(count(array_unique($names)), $names, "class_id $class_id has a duplicate spec_name");
+		}
+	}
+
+	public function test_install_specs_order_sequential_from_one_per_class(): void
+	{
+		$this->set_table_name('bb_specializations_table', 'phpbb_bb_specializations');
+
+		$this->invoke_protected('install_specs');
+
+		$by_class = [];
+		foreach ($this->inserted[0]['data'] as $row)
+		{
+			$by_class[$row['class_id']][] = $row['spec_order'];
+		}
+		foreach ($by_class as $class_id => $orders)
+		{
+			sort($orders);
+			$this->assertSame(range(1, count($orders)), $orders, "class_id $class_id spec_order must be sequential from 1");
+		}
+	}
+
+	public function test_install_specs_skips_when_table_not_wired(): void
+	{
+		$this->set_table_name('bb_specializations_table', null);
+
+		$this->invoke_protected('install_specs');
+
+		$this->assertCount(0, $this->inserted, 'install_specs() must no-op when bb_specializations_table is not in table_names');
 	}
 }
