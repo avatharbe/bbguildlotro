@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+  - [NEW] Game data audit (#7): added the Brawler (class_id 11, Fate of Gundabad, Nov 2021) and Mariner (class_id 12, Corsairs of Umbar, Oct 2023) classes, and the River Hobbit race (race_id 24, Update 37, Aug 2023) — all three were missing from the seeded class/race data entirely, verified against current live LOTRO. Full en/de/fr/it translations added for all three (de/fr/it are descriptive translations, not verified against LOTRO's actual in-game localization strings for this very recent content). README class/race tables and counts updated to match (18 classes, 25 races) — the Free Peoples table was also missing Beorning (class_id 10) even before this fix, now included. **Known follow-up gaps, not fixed here:** no icon assets exist yet for these three (`lotro_brawler`/`lotro_mariner`/`lotro_hobbit_river` — flagged on #3, the existing icon-asset tracking issue) and Brawler/Mariner have no trait-line specializations seeded in `lotro_provider::spec_catalog()` (#6's scope, not #7's).
+
 ## 2.0.0-rc2 26/07/2026
   - [CHG] Require bbGuild core >= 2.0.0-rc5 — aligns this plugin with the rc2 game-plugin set; earlier core releases can no longer install it
 

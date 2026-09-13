@@ -141,8 +141,31 @@ class lotro_installer_test extends TestCase
 		$this->invoke_protected('install_classes');
 		// First insert: class rows, second insert: language rows
 		$this->assertCount(2, $this->inserted);
-		// 11 Free Peoples classes (incl. class_id 0 "Unknown") + 6 Monster Play classes
-		$this->assertCount(17, $this->inserted[0]['data']);
+		// 13 Free Peoples classes (incl. class_id 0 "Unknown"; #7 adds
+		// Brawler and Mariner) + 6 Monster Play classes
+		$this->assertCount(19, $this->inserted[0]['data']);
+	}
+
+	/**
+	 * #7: Brawler (Fate of Gundabad, Nov 2021) and Mariner (Corsairs of
+	 * Umbar, Oct 2023) were missing from the seeded class data entirely.
+	 */
+	public function test_install_classes_includes_brawler_and_mariner(): void
+	{
+		$this->invoke_protected('install_classes');
+		$by_id = array();
+		foreach ($this->inserted[0]['data'] as $row)
+		{
+			$by_id[$row['class_id']] = $row;
+		}
+
+		$this->assertArrayHasKey(11, $by_id, 'Brawler (class_id 11) must be seeded');
+		$this->assertSame('PLATE', $by_id[11]['class_armor_type'], 'Brawler wears heavy armor');
+		$this->assertSame('lotro_brawler', $by_id[11]['imagename']);
+
+		$this->assertArrayHasKey(12, $by_id, 'Mariner (class_id 12) must be seeded');
+		$this->assertSame('MAIL', $by_id[12]['class_armor_type'], 'Mariner wears medium armor');
+		$this->assertSame('lotro_mariner', $by_id[12]['imagename']);
 	}
 
 	public function test_install_classes_valid_armor_types(): void
@@ -178,10 +201,10 @@ class lotro_installer_test extends TestCase
 		$this->invoke_protected('install_classes');
 		$lang_rows = $this->inserted[1]['data'];
 		$per_lang = array_count_values(array_column($lang_rows, 'language'));
-		// 17 classes x 4 languages = 68 total — full parity, unlike races below.
+		// 19 classes x 4 languages = 76 total — full parity, unlike races below.
 		foreach ($per_lang as $lang => $count)
 		{
-			$this->assertSame(17, $count, "$lang has 17 class name entries");
+			$this->assertSame(19, $count, "$lang has 19 class name entries");
 		}
 	}
 
@@ -192,7 +215,28 @@ class lotro_installer_test extends TestCase
 		$this->invoke_protected('install_races');
 		// First insert: race rows, second insert: language rows
 		$this->assertCount(2, $this->inserted);
-		$this->assertCount(25, $this->inserted[0]['data']);
+		// #7 adds River Hobbit (Update 37, Aug 2023)
+		$this->assertCount(26, $this->inserted[0]['data']);
+	}
+
+	/**
+	 * #7: River Hobbit (Update 37, Aug 2023) was missing from the seeded
+	 * race data entirely — a fourth Hobbit kindred alongside Fallohide/
+	 * Harfoot/Stoor.
+	 */
+	public function test_install_races_includes_river_hobbit(): void
+	{
+		$this->invoke_protected('install_races');
+		$by_id = array();
+		foreach ($this->inserted[0]['data'] as $row)
+		{
+			$by_id[$row['race_id']] = $row;
+		}
+
+		$this->assertArrayHasKey(24, $by_id, 'River Hobbit (race_id 24) must be seeded');
+		$this->assertSame(1, $by_id[24]['race_faction_id'], 'River Hobbit is Free Peoples');
+		$this->assertSame('lotro_hobbit_river', $by_id[24]['image_female']);
+		$this->assertSame('lotro_hobbit_river', $by_id[24]['image_male']);
 	}
 
 	public function test_install_races_valid_factions(): void
@@ -241,11 +285,13 @@ class lotro_installer_test extends TestCase
 		$this->invoke_protected('install_races');
 		$lang_rows = $this->inserted[1]['data'];
 		$per_lang = array_count_values(array_column($lang_rows, 'language'));
+		// #7 adds a fully-translated River Hobbit (all 4 languages), on top
+		// of the pre-existing gaps documented above (+1 to each count).
 		$this->assertSame(array(
-			'en' => 24,
-			'de' => 23,
-			'fr' => 20,
-			'it' => 24,
+			'en' => 25,
+			'de' => 24,
+			'fr' => 21,
+			'it' => 25,
 		), $per_lang);
 	}
 

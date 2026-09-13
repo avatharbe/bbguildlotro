@@ -48,6 +48,8 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 8,  'class_armor_type' => 'CLOTH', 'class_min_level' => 1,  'class_max_level' => 75, 'colorcode' => '#CC00AA', 'imagename' => 'lotro_rune-keeper');
 		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 9,  'class_armor_type' => 'MAIL',  'class_min_level' => 1,  'class_max_level' => 75, 'colorcode' => '#CC9933', 'imagename' => 'lotro_warden');
 		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 10, 'class_armor_type' => 'MAIL',  'class_min_level' => 1,  'class_max_level' => 75, 'colorcode' => '#CC9933', 'imagename' => 'lotro_beorning');
+		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 11, 'class_armor_type' => 'PLATE', 'class_min_level' => 1,  'class_max_level' => 75, 'colorcode' => '#996633', 'imagename' => 'lotro_brawler');
+		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 12, 'class_armor_type' => 'MAIL',  'class_min_level' => 1,  'class_max_level' => 75, 'colorcode' => '#0099CC', 'imagename' => 'lotro_mariner');
 		// Monster Play
 		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 20, 'class_armor_type' => 'MAIL',  'class_min_level' => 75, 'class_max_level' => 75, 'colorcode' => '#FF0044', 'imagename' => 'lotro_reaver');
 		$sql_ary[] = array('game_id' => $this->game_id, 'class_id' => 21, 'class_armor_type' => 'CLOTH', 'class_min_level' => 75, 'class_max_level' => 75, 'colorcode' => '#66FFCC', 'imagename' => 'lotro_defiler');
@@ -73,6 +75,8 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 8,  'language' => 'en', 'attribute' => 'class', 'name' => 'Rune-keeper','name_short' => 'Rune-keeper');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 9,  'language' => 'en', 'attribute' => 'class', 'name' => 'Warden',     'name_short' => 'Warden');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 10, 'language' => 'en', 'attribute' => 'class', 'name' => 'Beorning',   'name_short' => 'Beorning');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 11, 'language' => 'en', 'attribute' => 'class', 'name' => 'Brawler',    'name_short' => 'Brawler');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 12, 'language' => 'en', 'attribute' => 'class', 'name' => 'Mariner',    'name_short' => 'Mariner');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 20, 'language' => 'en', 'attribute' => 'class', 'name' => 'Reaver',     'name_short' => 'Reaver');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'en', 'attribute' => 'class', 'name' => 'Defiler',    'name_short' => 'Defiler');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'en', 'attribute' => 'class', 'name' => 'Weaver',     'name_short' => 'Weaver');
@@ -92,6 +96,8 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 8,  'language' => 'de', 'attribute' => 'class', 'name' => 'Runenbewahrer',   'name_short' => 'Runenbewahrer');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 9,  'language' => 'de', 'attribute' => 'class', 'name' => 'Hüter',           'name_short' => 'Hüter');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 10, 'language' => 'de', 'attribute' => 'class', 'name' => 'Beorninger',      'name_short' => 'Beorninger');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 11, 'language' => 'de', 'attribute' => 'class', 'name' => 'Schläger',        'name_short' => 'Schläger');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 12, 'language' => 'de', 'attribute' => 'class', 'name' => 'Seemann',         'name_short' => 'Seemann');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 20, 'language' => 'de', 'attribute' => 'class', 'name' => 'Schnitter',       'name_short' => 'Schnitter');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'de', 'attribute' => 'class', 'name' => 'Defiler',         'name_short' => 'Defiler');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'de', 'attribute' => 'class', 'name' => 'Weberspinne',     'name_short' => 'Weberspinne');
@@ -111,6 +117,8 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 8,  'language' => 'fr', 'attribute' => 'class', 'name' => 'Gardien des Rune',  'name_short' => 'Gardien des Rune');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 9,  'language' => 'fr', 'attribute' => 'class', 'name' => 'Sentinelle',        'name_short' => 'Sentinelle');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 10, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Beornide',          'name_short' => 'Beornide');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 11, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Bagarreur',         'name_short' => 'Bagarreur');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 12, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Marin',             'name_short' => 'Marin');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 20, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Coupeur',           'name_short' => 'Coupeur');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Defiler',           'name_short' => 'Defiler');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'fr', 'attribute' => 'class', 'name' => 'Araignée',          'name_short' => 'Araignée');
@@ -130,6 +138,8 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 8,  'language' => 'it', 'attribute' => 'class', 'name' => 'Rune-keeper','name_short' => 'Rune-keeper');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 9,  'language' => 'it', 'attribute' => 'class', 'name' => 'Warden',     'name_short' => 'Warden');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 10, 'language' => 'it', 'attribute' => 'class', 'name' => 'Beorning',   'name_short' => 'Beorning');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 11, 'language' => 'it', 'attribute' => 'class', 'name' => 'Rissaiolo', 'name_short' => 'Rissaiolo');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 12, 'language' => 'it', 'attribute' => 'class', 'name' => 'Marinaio',   'name_short' => 'Marinaio');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 20, 'language' => 'it', 'attribute' => 'class', 'name' => 'Reaver',     'name_short' => 'Reaver');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'it', 'attribute' => 'class', 'name' => 'Defiler',    'name_short' => 'Defiler');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'it', 'attribute' => 'class', 'name' => 'Weaver',     'name_short' => 'Weaver');
@@ -159,6 +169,7 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 21, 'race_faction_id' => 1, 'image_female' => 'lotro_hobbit_fallohide', 'image_male' => 'lotro_hobbit_fallohide');
 		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 22, 'race_faction_id' => 1, 'image_female' => 'lotro_hobbit_harfoot',   'image_male' => 'lotro_hobbit_harfoot');
 		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 23, 'race_faction_id' => 1, 'image_female' => 'lotro_hobbit_stoor',     'image_male' => 'lotro_hobbit_stoor');
+		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 24, 'race_faction_id' => 1, 'image_female' => 'lotro_hobbit_river',     'image_male' => 'lotro_hobbit_river');
 		// Elf
 		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 3,  'race_faction_id' => 1, 'image_female' => 'lotro_elf',              'image_male' => 'lotro_elf');
 		$sql_ary[] = array('game_id' => $this->game_id, 'race_id' => 31, 'race_faction_id' => 1, 'image_female' => 'lotro_elf_edhellond',    'image_male' => 'lotro_elf_edhellond');
@@ -197,6 +208,7 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'en', 'attribute' => 'race', 'name' => 'Fallohide Hobbit',      'name_short' => 'Fallohide');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'en', 'attribute' => 'race', 'name' => 'Harfoot Hobbit',        'name_short' => 'Harfoot');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 23, 'language' => 'en', 'attribute' => 'race', 'name' => 'Stoor Hobbit',          'name_short' => 'Stoor');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 24, 'language' => 'en', 'attribute' => 'race', 'name' => 'River Hobbit',          'name_short' => 'River Hobbit');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 3,  'language' => 'en', 'attribute' => 'race', 'name' => 'Elf',                   'name_short' => 'Elf');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 31, 'language' => 'en', 'attribute' => 'race', 'name' => 'Nandor Elf',            'name_short' => 'Nandor');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 32, 'language' => 'en', 'attribute' => 'race', 'name' => 'Lorien Elf',            'name_short' => 'Lorien');
@@ -222,6 +234,7 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'de', 'attribute' => 'race', 'name' => 'Falbhauthobbits',     'name_short' => 'Falbhaut');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'de', 'attribute' => 'race', 'name' => 'Harfusshobbits',      'name_short' => 'Harfuss');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 23, 'language' => 'de', 'attribute' => 'race', 'name' => 'Starrenhobbit',       'name_short' => 'Starren');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 24, 'language' => 'de', 'attribute' => 'race', 'name' => 'Flusshobbit',         'name_short' => 'Flusshobbit');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 3,  'language' => 'de', 'attribute' => 'race', 'name' => 'Elb',                 'name_short' => 'Elb');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 31, 'language' => 'de', 'attribute' => 'race', 'name' => 'Nandor Elben',        'name_short' => 'Nandor');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 32, 'language' => 'de', 'attribute' => 'race', 'name' => 'Lorien Elben',        'name_short' => 'Lorien');
@@ -244,6 +257,7 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Hobbits Pâles',            'name_short' => 'Hobbits Pâles');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Hobbits Pieds Velus',      'name_short' => 'Hobbits Pieds Velus');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 23, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Hobbits Forts',            'name_short' => 'Hobbits Forts');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 24, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Hobbit des Rivières',      'name_short' => 'Hobbit des Rivières');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 3,  'language' => 'fr', 'attribute' => 'race', 'name' => 'Elfe',                     'name_short' => 'Elfe');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 31, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Elfe d\'Edhollond',        'name_short' => 'Elfe d\'Edhollond');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 32, 'language' => 'fr', 'attribute' => 'race', 'name' => 'Elfe de Lorien',           'name_short' => 'Elfe de Lorien');
@@ -270,6 +284,7 @@ class lotro_installer extends abstract_game_install
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 21, 'language' => 'it', 'attribute' => 'race', 'name' => 'Fallohide Hobbit',      'name_short' => 'Fallohide');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 22, 'language' => 'it', 'attribute' => 'race', 'name' => 'Harfoot Hobbit',        'name_short' => 'Harfoot');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 23, 'language' => 'it', 'attribute' => 'race', 'name' => 'Stoor Hobbit',          'name_short' => 'Stoor');
+		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 24, 'language' => 'it', 'attribute' => 'race', 'name' => 'Hobbit del Fiume',      'name_short' => 'Hobbit del Fiume');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 3,  'language' => 'it', 'attribute' => 'race', 'name' => 'Elf',                   'name_short' => 'Elf');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 31, 'language' => 'it', 'attribute' => 'race', 'name' => 'Nandor Elf',            'name_short' => 'Nandor');
 		$sql_ary[] = array('game_id' => $this->game_id, 'attribute_id' => 32, 'language' => 'it', 'attribute' => 'race', 'name' => 'Lorien Elf',            'name_short' => 'Lorien');

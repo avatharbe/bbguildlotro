@@ -4,12 +4,12 @@
 
 [![Tests](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml)
 
-Lord of the Rings Online guilds are Kinships, and the community around them has always leaned more toward roleplay and shared adventuring than competitive raiding — a different pace this plugin is built to match rather than fight. bbguildlotro covers all 16 classes across Free Peoples and Monster Play, and 24 race variants (including Beorning, High Elf, and Stout-axe Dwarf) with sub-race detail like Man of Gondor or Lorien Elf, plus boss/zone links straight to LOTRO Allakhazam. It gives a Kinship's roster and recruitment the same forum-first home as any other guild tool here, without forcing a raid-guild structure onto a community that isn't one.
+Lord of the Rings Online guilds are Kinships, and the community around them has always leaned more toward roleplay and shared adventuring than competitive raiding — a different pace this plugin is built to match rather than fight. bbguildlotro covers all 18 classes across Free Peoples and Monster Play, and 25 race variants (including Beorning, High Elf, Stout-axe Dwarf, and River Hobbit) with sub-race detail like Man of Gondor or Lorien Elf, plus boss/zone links straight to LOTRO Allakhazam. It gives a Kinship's roster and recruitment the same forum-first home as any other guild tool here, without forcing a raid-guild structure onto a community that isn't one.
 
 ## Features
 
-- **LOTRO Classes** - 16 classes including Free Peoples (Burglar, Captain, Champion, Guardian, Hunter, Lore-master, Minstrel, Rune-keeper, Warden) and Monster Play (Reaver, Defiler, Weaver, BlackArrow, Warleader, Stalker) with color codes
-- **LOTRO Races** - 24 race variants across Man, Hobbit, Elf, Dwarf, Beorning, and Monster factions with sub-race specializations (e.g. Man of Gondor, Lorien Elf, Iron Hill Dwarf)
+- **LOTRO Classes** - 18 classes including Free Peoples (Burglar, Captain, Champion, Guardian, Hunter, Lore-master, Minstrel, Rune-keeper, Warden, Beorning, Brawler, Mariner) and Monster Play (Reaver, Defiler, Weaver, BlackArrow, Warleader, Stalker) with color codes
+- **LOTRO Races** - 25 race variants across Man, Hobbit, Elf, Dwarf, Beorning, and Monster factions with sub-race specializations (e.g. Man of Gondor, Lorien Elf, Iron Hill Dwarf, River Hobbit)
 - **Factions** - Free Peoples and Servants of the Eye
 - **Localization** - Class and race names in English, German, French, and Italian
 - **Allakhazam Links** - Boss and zone database URLs linked to LOTRO Allakhazam
@@ -45,7 +45,7 @@ Lord of the Rings Online guilds are Kinships, and the community around them has 
 | 1 | Free Peoples |
 | 2 | Servants of the Eye |
 
-### Free Peoples Classes (10)
+### Free Peoples Classes (13)
 
 | ID | Class | Armor |
 |----|-------|-------|
@@ -59,6 +59,9 @@ Lord of the Rings Online guilds are Kinships, and the community around them has 
 | 7 | Minstrel | Cloth |
 | 8 | Rune-keeper | Cloth |
 | 9 | Warden | Mail |
+| 10 | Beorning | Mail |
+| 11 | Brawler | Plate |
+| 12 | Mariner | Mail |
 
 ### Monster Play Classes (6)
 
@@ -71,10 +74,10 @@ Lord of the Rings Online guilds are Kinships, and the community around them has 
 | 24 | Warleader | Plate |
 | 25 | Stalker | Mail |
 
-### Races (24)
+### Races (25)
 
 **Man:** Man, Man of Dalelands, Man of Gondor, Man of Rohan
-**Hobbit:** Hobbit, Fallohide Hobbit, Harfoot Hobbit, Stoor Hobbit
+**Hobbit:** Hobbit, Fallohide Hobbit, Harfoot Hobbit, Stoor Hobbit, River Hobbit
 **Elf:** Elf, Nandor Elf, Lorien Elf, Mirkwood Elf, Rivendell Elf, High Elf
 **Dwarf:** Dwarf, Blue Mountains Dwarf, Grey Mountain Dwarf, Iron Hill Dwarf, Lonely Mountain Dwarf, White Mountain Dwarf, Stout-axe Dwarf
 **Beorning:** Beorning
