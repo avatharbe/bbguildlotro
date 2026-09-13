@@ -53,7 +53,7 @@ class avathar_bbguildlotro_extension_enable_test extends phpbb_functional_test_c
 		$count = (int) $db->sql_fetchfield('cnt');
 		$db->sql_freeresult($result);
 
-		$this->assertSame(17, $count, 'expected 17 lotro classes seeded in bb_classes');
+		$this->assertSame(19, $count, 'expected 19 lotro classes seeded in bb_classes');
 	}
 
 	public function test_lotro_races_seeded()
@@ -66,7 +66,7 @@ class avathar_bbguildlotro_extension_enable_test extends phpbb_functional_test_c
 		$count = (int) $db->sql_fetchfield('cnt');
 		$db->sql_freeresult($result);
 
-		$this->assertSame(25, $count, 'expected 25 lotro races seeded in bb_races');
+		$this->assertSame(26, $count, 'expected 26 lotro races seeded in bb_races');
 	}
 
 	public function test_version_constant_matches_composer_json()
