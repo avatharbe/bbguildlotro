@@ -118,7 +118,7 @@ class avathar_bbguildlotro_guild_view_renders_test extends phpbb_functional_test
 			'tab_order'  => 0,
 			'tab_status' => 1,
 		)));
-		$tab_id = (int) $db->sql_nextid();
+		$tab_id = (int) $db->sql_last_inserted_id();
 
 		$db->sql_query('INSERT INTO ' . $prefix . 'bb_portal_modules ' . $db->sql_build_array('INSERT', array(
 			'guild_id'            => self::GUILD_ID,
