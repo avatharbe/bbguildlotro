@@ -3,8 +3,8 @@
   "type": "phpbb-extension",
   "description": "Lord of the Rings Online game plugin for bbGuild. Provides LOTRO classes, races, and factions.",
   "homepage": "https://github.com/avatharbe/bbguildlotro",
-  "version": "2.0.0-rc2",
-  "time": "2026-07-26",
+  "version": "2.1.0",
+  "time": "2026-09-22",
   "license": "GPL-2.0-only",
   "authors": [
     {

@@ -1,6 +1,6 @@
 # bbGuild - Lord of the Rings Online
 
-**Current version:** 2.0.0-rc2 (release candidate)
+**Current version:** 2.1.0
 
 [![Tests](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml/badge.svg)](https://github.com/avatharbe/bbguildlotro/actions/workflows/tests.yml)
 
