@@ -1,7 +1,19 @@
 # Changelog
 
-## Unreleased
+## 2.1.0 22/09/2026
+  - [NEW] Added a full EPV/unit/functional/smoke/integration test suite (#5)
+  - [NEW] Seeded specializations for Lord of the Rings Online — a real 27-spec catalog (#6)
   - [NEW] Game data audit (#7): added the Brawler (class_id 11, Fate of Gundabad, Nov 2021) and Mariner (class_id 12, Corsairs of Umbar, Oct 2023) classes, and the River Hobbit race (race_id 24, Update 37, Aug 2023) — all three were missing from the seeded class/race data entirely, verified against current live LOTRO. Full en/de/fr/it translations added for all three (de/fr/it are descriptive translations, not verified against LOTRO's actual in-game localization strings for this very recent content). README class/race tables and counts updated to match (18 classes, 25 races) — the Free Peoples table was also missing Beorning (class_id 10) even before this fix, now included. **Known follow-up gaps, not fixed here:** no icon assets exist yet for these three (`lotro_brawler`/`lotro_mariner`/`lotro_hobbit_river` — flagged on #3, the existing icon-asset tracking issue) and Brawler/Mariner have no trait-line specializations seeded in `lotro_provider::spec_catalog()` (#6's scope, not #7's).
+  - [FIX] Stale class/race counts in the functional test, following the #7 data audit
+  - [FIX] Various CI/test fixture fixes surfaced while adding the new suite (nonexistent DB helper, login-vs-disable_ext ordering, missing `bb_portal_tabs` seed row in the guild-view functional fixture)
+  - [FIX] `cleanup.sql`: stale `bbguild_lotro` naming and a wrong column name
+  - [FIX] `depends_on()` pointed at a bbguild core migration removed by core's migration squash
+  - [FIX] Unit test broken by the language-service migration
+  - [FIX] `composer.json`: wrong homepage URL, missing `require-dev`
+  - [CHG] Deprecated `sql_nextid()`/`add_lang_ext()` calls replaced with `sql_last_inserted_id()`/the language service
+  - [CHG] Core version pairing bumped to `>=2.1.0`
+  - [NEW] Added community health files (CoC, security policy, contributing guide, templates)
+  - [NEW] Added a docs site (MkDocs + GitHub Pages)
 
 ## 2.0.0-rc2 26/07/2026
   - [CHG] Require bbGuild core >= 2.0.0-rc5 — aligns this plugin with the rc2 game-plugin set; earlier core releases can no longer install it
